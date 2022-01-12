@@ -4,6 +4,8 @@
 
 :eyes: [Specifiers and flags](#specifiers-and-flags)
 
+  * [Implementation](#implementation)
+
 :collision: [New concept](#new-concept): Variadic functions
 
 
@@ -19,8 +21,9 @@ int printf(const char *format, ...);
 ```
 where format contains format tags (specifiers and flags) that are replaced by the values 
 specified in subsequent additional argument and formatted as needed. The format tags prototype is:
-<img height=30 align=center src="https://user-images.githubusercontent.com/71781441/149177406-de392c70-a474-4bac-9b3a-afc9fd730fdb.jpg" >
+<img height=40 align=center src="https://user-images.githubusercontent.com/71781441/149183604-a15b6f20-62c0-4e2d-ad3c-1be8d157d494.jpg" >
 
+On success, the total number of characters written is returned.
 
 ## Specifiers and flags
 The string argument that contains the text to be written to stdout contain
@@ -49,6 +52,9 @@ And the following flags:
 |``#`` | The value is preceeded with 0x or 0X (used with x or X specifiers) for values different than zero.|
 |`` `` | If there's no sign, a blank space is inserted before the value.|
 |``+`` | Forces to preceed the result with a plus or minus sign.|
+
+### Implementation
+To format the output, the const char* is iterated and printed until a percent sign (``%``) is found. Then, 
 
 
 ## New concept : Variadic functions
