@@ -4,8 +4,6 @@
 
 :eyes: [Specifiers and flags](#specifiers-and-flags)
 
-  * [Implementation](#implementation)
-
 :collision: [New concept](#new-concept): Variadic functions
 
 
@@ -28,16 +26,16 @@ On success, the total number of characters written is returned.
 ## Specifiers and flags
 The string argument that contains the text to be written to stdout contain
 This implementation manage the following specifiers:
-|Conversions|Description|
-|:---------:|:---------:|
-|``%c`` | single character |
-|``%s`` | string of characters|
-|``%p`` | pointer address|
-|``%d`` | signed decimal (base 10) integer |
-|``%i`` | signed decimal integer |
-|``%u`` | unsigned decimal integer|
-|``%x`` | unsigned hexadecimal (base 16) integer|
-|``%X`` | unsigned hexadecimal integer (uppercase)|
+|Conversions|Description|Type|
+|:---------:|:---------:|:--:|
+|``%c`` | single character |int|
+|``%s`` | string of characters|char*|
+|``%p`` | pointer address|void*|
+|``%d`` | signed decimal (base 10) integer |int|
+|``%i`` | signed decimal integer |int|
+|``%u`` | unsigned decimal integer|int|
+|``%x`` | unsigned hexadecimal (base 16) integer|unsigned int|
+|``%X`` | unsigned hexadecimal integer (uppercase)|unsigned int|
 |``%%`` | percent sign|
 
 And the following flags:
@@ -52,12 +50,13 @@ And the following flags:
 |``#`` | The value is preceeded with 0x or 0X (used with x or X specifiers) for values different than zero.|
 |`` `` | If there's no sign, a blank space is inserted before the value.|
 |``+`` | Forces to preceed the result with a plus or minus sign.|
+|``l``| Modifies the length of the data type. For d and i specifiers, takes an int but converts it into a long int. For u,x and X specifiers, convert it into an unsigned long int. And for s specifier, converts it into wchar_t*.|
+|``h``| Modifies the length of the data type. For d and i specifiers, takes an int but converts it into a short int. For u,x and X specifiers, convert it into an unsigned short int.|
 
-### Implementation
-To format the output, the const char* is iterated and printed until a percent sign (``%``) is found. Then, 
+To format the output, the const char* is iterated and printed until a percent sign (``%``) is found. Then, all the flags found are parsed and the related information is kept in a struct until the end of the string is reached or a specifier is found.
 
 
-## New concept : Variadic functions
+## New concept
 A variadic function is a special type of function that takes a variable number of arguments.
 In order to handle a variable number of arguments the following functions are used:
 |Function|Description|
