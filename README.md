@@ -48,7 +48,7 @@ And the following flags:
 |``-`` | Left-justify within the given field width.|
 |``0`` | Left-pads the number with zeroes instead of spaces when padding is specified.|
 |``#`` | The value is preceeded with 0x or 0X (used with x or X specifiers) for values different than zero.|
-|`` `` | If there's no sign, a blank space is inserted before the value.|
+|(space) | If there's no sign, a blank space is inserted before the value.|
 |``+`` | Forces to preceed the result with a plus or minus sign.|
 |``l``| Modifies the length of the data type. For d and i specifiers, takes an int but converts it into a long int. For u,x and X specifiers, convert it into an unsigned long int. And for s specifier, converts it into wchar_t*.|
 |``h``| Modifies the length of the data type. For d and i specifiers, takes an int but converts it into a short int. For u,x and X specifiers, convert it into an unsigned short int.|
